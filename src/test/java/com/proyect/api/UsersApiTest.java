@@ -29,7 +29,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 
 
 @WebMvcTest(UserController.class)
-@ContextConfiguration(classes = TestingApplication.class)
+/*@ContextConfiguration(classes = TestingApplication.class)*/
 public class UsersApiTest {
 @Autowired
 private MockMvc mockMvc;
