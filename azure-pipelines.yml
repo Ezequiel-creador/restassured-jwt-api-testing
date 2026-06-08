@@ -23,7 +23,7 @@ steps:
     displayName: 'Start Spring Boot'
   - script: |
       cat app.log
-      displayName: 'Show Spring Boot Log'  
+    displayName: 'Show Spring Boot Log'  
   - task: Maven@4 
     displayName: 'Run tests'
     inputs:
@@ -32,5 +32,5 @@ steps:
   - script: |
       echo "==== APP LOG AFTER TESTS ===="
       cat app.log
-      displayName: 'Show application log after tests'
-      condition: always()
+    displayName: 'Show application log after tests'
+    condition: always()
