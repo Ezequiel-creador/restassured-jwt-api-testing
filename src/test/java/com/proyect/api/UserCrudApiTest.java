@@ -167,7 +167,7 @@ void testGetUserByInvalidUsername(){
    .header("Authorization","Bearer " + token)
 
    .when()
-   .get("/api/users/{username}", username)
+   .get("http://localhost:8081/api/users/{username}", username)
 
    .then()
    .statusCode(403);
@@ -213,7 +213,7 @@ void testGetUserByInvalidUsername(){
    .header("Authorization","Bearer " + token)
 
    .when()
-   .get("/api/users/{username}", username)
+   .get("http://localhost:8081/api/users/{username}", username)
 
    .then()
    .statusCode(403);
