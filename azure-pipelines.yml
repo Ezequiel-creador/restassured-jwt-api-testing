@@ -21,8 +21,16 @@ steps:
       echo "Waiting for application startup..."
       sleep 60
     displayName: 'Start Spring Boot'
+  - script: |
+      cat app.log
+      displayName: 'Show Spring Boot Log'  
   - task: Maven@4 
     displayName: 'Run tests'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'test'
+  - script: |
+      echo "==== APP LOG AFTER TESTS ===="
+      cat app.log
+      displayName: 'Show application log after tests'
+      condition: always()
