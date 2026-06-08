@@ -1,15 +1,17 @@
-package com.proyect.api;
+package com.proyect.testing.api;
 
 
-import com.proyect.testing.TestingApplication;
+
+
 import com.proyect.testing.controller.UserController;
 import com.proyect.testing.model.User;
+import com.proyect.testing.security.JwtService;
+import com.proyect.testing.service.UserDetailsServiceImpl;
 import com.proyect.testing.service.UserService;
 
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.when;
@@ -22,14 +24,14 @@ import java.util.Optional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 
 
 @WebMvcTest(UserController.class)
-/*@ContextConfiguration(classes = TestingApplication.class)*/
+
 public class UsersApiTest {
 @Autowired
 private MockMvc mockMvc;
@@ -37,6 +39,11 @@ private MockMvc mockMvc;
 @MockBean
     private UserService userService;
 
+@MockBean
+    JwtService jwtService;
+
+@MockBean
+    UserDetailsServiceImpl userDetailsService;
 
 @Test
 @WithMockUser
@@ -72,6 +79,8 @@ void testUserNotFound() throws Exception {
     when(userService.getByUser("Ezequiel")).thenReturn(Optional.empty());
     mockMvc.perform(get("/api/users/Ezequiel"))
             .andExpect(status().isNotFound());
-}
+} 
+
+
 
 }

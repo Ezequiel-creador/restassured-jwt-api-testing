@@ -15,7 +15,7 @@ public class ApiSecurityConfig {
 private JwtFilter jwtFilter;
 
    @Bean
-   @Order(1)
+
            public SecurityFilterChain apifilterChain(HttpSecurity http) throws Exception {
            
             http
