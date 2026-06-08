@@ -6,8 +6,18 @@ pool:
 
 steps:
   - task: Maven@4
-    displayName: 'Compile project'
+    displayName: 'Build application'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean compile'
-
+      options: '-DskipTests'
+  - script: |
+      nohup mvn spring-boot > app.log 2>&1 &
+      echo "Waiting for application startup..."
+      sleep 60
+    displayName: 'Start Spring Boot'
+  - task: Maven@4 
+    displayName: 'Run tests'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'test'
