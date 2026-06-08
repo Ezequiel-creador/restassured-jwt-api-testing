@@ -1,0 +1,13 @@
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: Maven@4
+    displayName: 'Compile project'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'clean compile'
+
