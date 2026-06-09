@@ -96,7 +96,7 @@ void testGetUserByInvalidUsername(){
     .statusCode(200)
     .body("username", equalTo(username));
 
-    token= getToken(username, "1234");
+    token = getToken(username, "1234");
     
     given()
     .header("Authorization", "Bearer " +token)
@@ -164,13 +164,13 @@ void testGetUserByInvalidUsername(){
 
     
     given()
-   .header("Authorization","Bearer " + token)
+   .header("Authorization","Bearer " + getToken(usernameNew, "4321"))
 
    .when()
    .get("http://localhost:8081/api/users/{username}", username)
 
    .then()
-   .statusCode(403);
+   .statusCode(404);
    
   }
   
@@ -210,13 +210,13 @@ void testGetUserByInvalidUsername(){
     .statusCode(200);
 
      given()
-   .header("Authorization","Bearer " + token)
+   .header("Authorization","Bearer " + getToken("admin", "1234"))
 
    .when()
    .get("http://localhost:8081/api/users/{username}", username)
 
    .then()
-   .statusCode(403);
+   .statusCode(404);
    }
    
    
