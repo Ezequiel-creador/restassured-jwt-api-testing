@@ -1,13 +1,15 @@
-package com.proyect.api;
+package com.proyect.testing.api;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.Test;
 
+import com.proyect.testing.report.BaseTest;
+
 import io.restassured.http.ContentType;
 
 
-public class UserCrudApiTest {
+public class UserCrudApiTest extends BaseTest{ 
     
 private String getToken(String username, String password){
  return given()

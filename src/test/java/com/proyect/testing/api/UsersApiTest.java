@@ -2,6 +2,7 @@ package com.proyect.testing.api;
 
 import com.proyect.testing.controller.UserController;
 import com.proyect.testing.model.User;
+import com.proyect.testing.report.BaseTest;
 import com.proyect.testing.security.JwtService;
 import com.proyect.testing.service.UserDetailsServiceImpl;
 import com.proyect.testing.service.UserService;
@@ -23,7 +24,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 
 @WebMvcTest(UserController.class)
 
-public class UsersApiTest {
+public class UsersApiTest extends BaseTest {
 @Autowired
 private MockMvc mockMvc;
 

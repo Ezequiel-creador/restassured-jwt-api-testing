@@ -14,7 +14,7 @@ steps:
     displayName: 'Build application'
     inputs:
       mavenPomFile: 'pom.xml'
-      goals: 'clean compile'
+      goals: 'clean package'
       options: '-DskipTests'
   - script: |
       nohup mvn spring-boot:run > app.log 2>&1 &
@@ -34,3 +34,10 @@ steps:
       cat app.log
     displayName: 'Show application log after tests'
     condition: always()
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Extent Report'
+    condition: always()
+    inputs:
+     PathtoPublish: 'target'
+     ArtifactName: 'test-report'
+     publishLocation: 'Container'

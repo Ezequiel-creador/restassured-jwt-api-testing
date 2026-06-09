@@ -1,10 +1,13 @@
-package com.proyect.api;
+package com.proyect.testing.api;
 
 import org.junit.jupiter.api.Test;
+
+import com.proyect.testing.report.BaseTest;
+
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 
-public class JwtApiTest {
+public class JwtApiTest extends BaseTest {
 
 
 @Test
